@@ -1,5 +1,5 @@
-const websiteUrl = 'https://project-1364.vercel.app';
-// const websiteUrl = 'http://localhost:3000';
+// const websiteUrl = 'https://project-1364.vercel.app';
+const websiteUrl = 'http://localhost:3000';
 
 self.addEventListener('push', function (event) {
   if (event.data) {
