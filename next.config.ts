@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true
   },
-  reactCompiler: true
+  // reactCompiler: true (Doesn't Work with PWA)
 };
 
 export default nextConfig;
