@@ -1,4 +1,5 @@
 'use server';
+import { LOGO_PATH } from '@/lib/consts';
 import webpush, { type PushSubscription } from 'web-push';
 
 webpush.setVapidDetails(
@@ -34,7 +35,7 @@ export async function sendNotification(message: string) {
       JSON.stringify({
         title: 'Test Notification',
         body: message,
-        icon: '/icon.png'
+        icon: LOGO_PATH
       })
     );
     return { success: true };

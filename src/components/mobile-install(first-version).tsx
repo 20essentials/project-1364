@@ -1,28 +1,20 @@
 import { useState, useEffect } from 'react';
 
 export function InstallPrompt() {
-  const [isMobile, setIsMobile] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
-    const ua = navigator.userAgent.toLowerCase();
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+    setIsIOS(isIOS);
 
-    const mobile =
-      /android|iphone|ipad|ipod/.test(ua) ||
-      (navigator.maxTouchPoints > 1 && /macintosh/.test(ua));
-
-    const ios =
-      /iphone|ipad|ipod/.test(ua) ||
-      (navigator.maxTouchPoints > 1 && /macintosh/.test(ua));
-
-    setIsMobile(mobile);
-    setIsIOS(ios);
     setIsStandalone(window.matchMedia('(display-mode: standalone)').matches);
   }, []);
 
-  if (!isMobile || isStandalone) {
-    return null;
+  if (isStandalone) {
+    return null; // Don't show install button if already installed
   }
 
   return (
